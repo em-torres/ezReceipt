@@ -11,5 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.react('resources/js/app.jsx', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    .copyDirectory('resources/img', 'public/img');
+
+mix.version();
+
+mix.browserSync({
+    proxy: process.env.MIX_SENTRY_DSN_PUBLIC
+});
